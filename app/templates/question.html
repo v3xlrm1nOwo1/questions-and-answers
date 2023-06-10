@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Question{% endblock %}
+
+{% block show_links %}{{ show_links(data.user) }}{% endblock %}
+
+{% block content %}
+  <div class="container theme-showcase" role="main">
+    <div class="jumbotron">
+      <h2>{{ data.sengle_question.Questions.question }}</h2>
+      <p>{{ data.sengle_question.Questions.answer }}.</p>
+      <p><a class="btn btn-primary btn">Asked By: {{ data.sengle_question[1].name }}</a></p>
+      <p><a class="btn btn-primary btn">Answered By: {{ data.sengle_question[2].name }}</a></p>
+    </div>
+
+  </div> <!-- /container -->
+{% endblock %}

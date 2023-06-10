@@ -1,0 +1,27 @@
+{% macro show_links(user, class1='', class2='', class3='', class4='', class5='', class6='', class7='') %}
+<ul class="nav navbar-nav">
+    <li class={{ class1 }}><a href="{{ url_for('home') }}">Home</a></li>
+
+    {% if not user %}
+    <li class={{ class2 }}><a href="{{ url_for('login') }}">Login</a></li>
+    <li class={{ class3 }}><a href="{{ url_for('register') }}">Register</a></li>
+    {% endif %}
+
+    {% if user and user.expert == False %}
+    <li class={{ class4 }}><a href="{{ url_for('ask') }}">Ask Question</a></li>
+    {% endif %}
+
+    {% if user and user.expert == True %}
+    <li class={{ class5 }}><a href="{{ url_for('unanswered') }}">Answer Questions</a></li>
+    {% endif %}
+    
+    {% if user and user.admin == True %}
+    <li class={{ class6 }}><a href="{{ url_for('users') }}">User Setup</a></li>
+    {% endif %}
+
+    {% if user %}
+    <li class={{ class7 }}><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% endif %}
+    
+</ul>
+{% endmacro %}

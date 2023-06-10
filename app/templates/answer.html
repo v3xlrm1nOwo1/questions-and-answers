@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Answer Question{% endblock %}
+
+{% block show_links %}{{ show_links(data.user, class5="active") }}{% endblock %}
+
+{% block content %}
+<div class="container theme-showcase" role="main">
+
+  <div class="page-header">
+    <h1>{{ data.question.question }}</h1>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="well bs-component">
+        <form class="form-horizontal" method="post" action="{{ url_for('answer', question_id=data.question.id) }}">
+          <fieldset>
+            <div class="form-group">
+              <label for="textArea" class="col-lg-2 control-label">Answer</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="textArea" name="answer"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div> <!-- /container -->
+
+{% endblock %}

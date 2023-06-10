@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Answered Questions{% endblock %}
+
+{% block show_links %}{{ show_links(data.user, class1="active") }}{% endblock %}
+
+{% block header %}Answered Questions{% endblock %}
+
+{% block main %}
+  {% for question in data.questions %}
+    <div class="list-group md-4">
+      <a href="{{ url_for('question', question_id=question[0].id) }}" class="list-group-item">
+        <h4 class="list-group-item-heading">Question: {{ question[0].question }}</h4>
+        <p class="list-group-item-text">Asked by: {{ question[1].name }}</p>
+        <p class="list-group-item-text">Answered by: {{ question[2].name }}</p>
+      </a>
+    </div>
+  {% endfor %}
+{% endblock %}
